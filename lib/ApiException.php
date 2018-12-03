@@ -75,6 +75,7 @@ class ApiException extends Exception
         parent::__construct($message, $code);
         $this->responseHeaders = $responseHeaders;
         $this->responseBody = $responseBody;
+        $this->responseHttpErrorCode = $code;
     }
 
     /**
@@ -97,6 +98,16 @@ class ApiException extends Exception
         return $this->responseBody;
     }
 
+    /**
+     * Gets the HTTP response error code
+     *
+     * @return int 0 HTTP response code
+     */
+    public function getResponseHttpErrorCode()
+    {
+        return $this->responseHttpErrorCode;
+    }
+    
     /**
      * Sets the deseralized response object (during deserialization)
      *
